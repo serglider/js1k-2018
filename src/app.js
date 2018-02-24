@@ -1,74 +1,70 @@
-const W = a.width;
-const H = a.height;
-const drCr = drawCircle.bind(null, c, 8, '#000');
-const drLn = drawLine.bind(null, 4, '#000');
-const orig = {x: W/2, y: H/2};
-const arms = createArms(orig, 20);
-const tracking = new DrawingCanvas();
-animate();
+w = a.width;
+h = a.height;
+k = document;
+o = {x: w/2, y: h/2};
+p = Math.PI;
+e = k.createElement('input');
+e.style = 'position:fixed;top:0;width:99%';
+b.appendChild(e);
+let r;
+
+e.onchange = function () {
+    cancelAnimationFrame(r);
+    let parts = e.value.split('&');
+    let data = parts[0];
+    let an = (parts[1] && parts[1].split(',')) || [];
+    data = data.split(',').map((_, i) => [(+_.trim() || 50), (!an[i] ? 0.01 : (+an[i].trim() || 1) * p / 180)]);
+    j = data.reduce((acc, item, i) => {
+        z = i ? acc[i - 1].e : o;
+        let arm = new L(z, item[0], item[1]);
+        acc.push(arm);
+        return acc;
+    }, []);
+    t = new D;
+    animate();
+};
 
 function animate() {
-    c.clearRect(0, 0, W, H);
-    update();
-    track();
-    draw();
-    requestAnimationFrame(animate);
+
+    c.clearRect(0, 0, w, h);
+
+    j.forEach(a => a.u());
+    t.a(j[j.length - 1].e);
+
+    c.drawImage(t.i, 0, 0);
+    j.forEach(a => a.d());
+
+    r = requestAnimationFrame(animate);
 }
 
-function track() {
-    const point = arms[arms.length - 1].end;
-    tracking.addPoint(point);
-}
+function L(o, len, da) {
+    let a = 0;
+    this.e = {};
 
-function DrawingCanvas() {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = W;
-    canvas.height = H;
+    this.d = () => {
+        c.beginPath();
+        c.moveTo(o.x, o.y);
+        c.lineTo(this.e.x, this.e.y);
+        c.lineWidth = 4;
+        c.stroke();
+    };
 
-    const drCr = drawCircle.bind(null, ctx, 3, '#f00');
-
-    this.canvas = canvas;
-    this.addPoint = (p) => {
-        drCr(p.x, p.y);
+    this.u = () => {
+        a += da;
+        this.e.x = o.x + Math.cos(a) * len;
+        this.e.y = o.y + Math.sin(a) * len;
     };
 }
 
-function update() {
-    arms.forEach(a => a.update());
-}
-
-function draw() {
-    c.drawImage(tracking.canvas, 0, 0);
-    drCr(orig.x, orig.y);
-    arms.forEach(a => a.draw());
-}
-
-function createArms(orig, n) {
-    const arr = [];
-    for (let i = 0; i < n; i++) {
-        const l = getRandomInt(40, 250);
-        const da = getRandom(-0.12, 0.12);
-        const o = i ? arr[i - 1].end : orig;
-        const arm = new Arm(o, l, da);
-        arr.push(arm);
-    }
-    return arr;
-}
-
-
-function Arm(orig, length, da) {
-    let angle = 0;
-    this.end = {};
-
-    this.draw = () => {
-        drCr(this.end.x, this.end.y);
-        drLn(orig.x, orig.y, this.end.x, this.end.y);
-    };
-
-    this.update = () => {
-        angle += da;
-        this.end.x = orig.x + Math.cos(angle) * length;
-        this.end.y = orig.y + Math.sin(angle) * length;
+function D() {
+    this.i = k.createElement('canvas');
+    this.i.width = w;
+    this.i.height = h;
+    g = this.i.getContext('2d');
+    g.fillStyle = 'red';
+    this.a = d => {
+        g.beginPath();
+        g.arc(d.x, d.y, 3, 0, 2 * p, false);
+        g.fill();
     };
 }
