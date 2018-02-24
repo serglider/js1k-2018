@@ -16,11 +16,13 @@ Finally, `submission/app.min.js` is a result of aggressive minification by means
 
 ## How to
 
-To start observing how your pattern emerges, one should fill the input field using the following format `[arms_lengths]&[arms_rotation_speeds]` where
+To start observing how patterns emerge, one should fill the input field using the following format `[arms_lengths]&[arms_rotation_speeds]` where
 
 `arms_lengths` - is a string containing comma-separated values (in pixels) of the arm lengths. Inability to convert the value to a number defaults to 50 pixels.
 
 `arms_rotation_speeds` - is a string containing comma-separated values (in degrees) of the arm rotation speeds i.e. a change of the angle per frame. The system will try to maintain 60 fps, so the value of 6 here will give you a full circle in a second. Inability to convert the value to a number defaults to 1 degree.
+
+Each string value is trimmed before converting to number, so spaces don't matter.
 
 The number of the arms is defined by the number of the arm lengths. So if the number of the rotation speeds is less then that, the missing slots will be filled with default values.
 
