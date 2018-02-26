@@ -10,9 +10,9 @@ This is very a simplified forward-kinematic system which is an entry for the [js
 
 `human-readable/app.js` is a place you might want to take a look to understand what's going on in the application.
 
- `src/app.js` is what was actually developed having in mind further minification. It was automatically minified into `dist/app.min.js` by the Gulp plugin.
+ `src/app.js` is what was actually developed having in mind further minification. It was automatically minified into `dist/app.js` by the Gulp plugin.
 
-Finally, `submission/app.min.js` is a result of aggressive minification by means of the [Closure Compiler](https://closure-compiler.appspot.com/home) and a couple of further tweaks. That's what was submitted to the competition.
+Finally, `submission/app.js` is a result of aggressive minification by means of the [Closure Compiler](https://closure-compiler.appspot.com/home) and a couple of further tweaks. That's what was submitted to the competition.
 
 ## How to
 
