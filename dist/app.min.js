@@ -5,10 +5,11 @@ o = {x: w/2, y: h/2};
 p = Math.PI;
 e = k.createElement('input');
 e.style = 'position:fixed;top:0;width:99%';
+e.value = '200,25&1,12';
 b.appendChild(e);
 let r;
-
-e.onchange = function () {
+e.focus();
+e.onblur = function () {
     cancelAnimationFrame(r);
     let parts = e.value.split('&');
     let data = parts[0];
@@ -23,6 +24,7 @@ e.onchange = function () {
     t = new D;
     animate();
 };
+e.blur();
 
 function animate() {
 

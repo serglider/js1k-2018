@@ -14,10 +14,13 @@ const origin = {
 };
 const input = document.createElement('input');
 input.style = 'position:fixed;top:0;width:99%';
+input.value='200, 100 & .1, -12';
 b.appendChild(input);
-let raf, arms, trackCanvas;;
+let raf, arms, trackCanvas;
 
-input.onchange = function () {
+
+
+input.onblur = function () {
 
     cancelAnimationFrame(raf);
 
@@ -41,6 +44,9 @@ input.onchange = function () {
 
     animate();
 };
+
+input.focus();
+input.blur();
 
 function animate() {
     // clear
