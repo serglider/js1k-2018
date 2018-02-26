@@ -16,7 +16,8 @@ Finally, `submission/app.min.js` is a result of aggressive minification by means
 
 ## How to
 
-To start observing how patterns emerge, one should fill the input field using the following format `[arms_lengths]&[arms_rotation_speeds]` where
+The app starts animation automatically using predefined value from the input. To start observing how your own patterns emerge, you should fill the input field using the following format `[arms_lengths]&[arms_rotation_speeds]` where:
+
 
 `arms_lengths` - is a string containing comma-separated values (in pixels) of the arm lengths. Inability to convert the value to a number defaults to 50 pixels.
 
